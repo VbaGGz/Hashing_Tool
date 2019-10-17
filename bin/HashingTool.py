@@ -7,10 +7,13 @@
 # WARNING! All changes made in this file will be lost!
 
 import sys
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
+
 from AboutPage import Ui_About_Page
 from ContactPage import Ui_ContactForm
+
 
 class Ui_MainWindow(object):
 
@@ -123,6 +126,19 @@ class Ui_MainWindow(object):
         else:
             self.Status_label.setText("Nothing To Copy Hash File First")
 
+    def checkForUpdates(self):
+        import urllib.request
+        print('Beginning file download with urllib2')
+        url = "https://github.com/VbaGGz/Hashing_Tool/blob/master/TEMP/VERSION.txt"
+        urllib.request.urlretrieve(url, "VERSION.txt")
+        print("check open")
+        with open("VERSION.txt", 'r') as file:
+            line = file.read()
+            if "VERSION = {}".format(self.CurrentVersion) in line:
+                print(True)
+            else:
+                print(False)
+
     def Hash(self):
         import hashlib
         hashed = False
@@ -206,6 +222,7 @@ def App_SetUp():
     ui.actionContact_Me.triggered.connect(Contact_Page.show)
     ui.actionAbout.triggered.connect(About_Page.show)
     ui.toolButton.clicked.connect(ui.Copy)
+    ui.actionCheck_for_Updates.triggered.connect(ui.checkForUpdates)
 
     MainWindow.show()
     sys.exit(app.exec_())
