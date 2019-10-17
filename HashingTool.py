@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
         MainWindow.setObjectName("MainWindow")
         MainWindow.setFixedSize(496, 206)
         MainWindow.setAutoFillBackground(False)
-        MainWindow.setWindowIcon(QtGui.QIcon('Icons\hash.png'))
+        MainWindow.setWindowIcon(QtGui.QIcon('Hashing_Tool\Icons\hash.png'))
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.comboBox = QtWidgets.QComboBox(self.centralwidget)

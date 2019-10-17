@@ -14,7 +14,7 @@ class Ui_About_Page(object):
     def setupUi(self, About_Page):
         About_Page.setObjectName("About_Page")
         About_Page.resize(401, 271)
-        About_Page.setWindowIcon(QtGui.QIcon('Icons\hash.png'))
+        About_Page.setWindowIcon(QtGui.QIcon('Hashing_Tool\Icons\hash.png'))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)

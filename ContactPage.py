@@ -14,7 +14,7 @@ class Ui_ContactForm(object):
     def setupUi(self, ContactForm):
         ContactForm.setObjectName("ContactForm")
         ContactForm.resize(343, 297)
-        ContactForm.setWindowIcon(QtGui.QIcon('Icons\hash.png'))
+        ContactForm.setWindowIcon(QtGui.QIcon('Hashing_Tool\Icons\hash.png'))
         self.pushButton = QtWidgets.QPushButton(ContactForm)
         self.pushButton.setGeometry(QtCore.QRect(260, 270, 75, 23))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
