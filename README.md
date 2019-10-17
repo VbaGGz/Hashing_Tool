@@ -2,7 +2,8 @@
 
 This Program Was Created To help me Lean PyQt5.
 
-Main Window
+**Main Window**
+
 ![alt text](https://i.imgur.com/xtZT8YV.png)
 
 
