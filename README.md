@@ -1,5 +1,7 @@
 # Hashing_Tool
 
+**V. 1.2**
+
 This Program Was Created To help me Lean PyQt5.
 
 **Main Window**
@@ -22,8 +24,8 @@ This Program Was Created To help me Lean PyQt5.
 * Sha256
 * Sha512
 * Sha384
+* Check for Updates 
 
 **Things that don't work:**
 
-* Check for Updates 
 * Contact Me

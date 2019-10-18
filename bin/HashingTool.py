@@ -1,19 +1,11 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'HashingTool.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.0
-#
-# WARNING! All changes made in this file will be lost!
-
 import sys
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QFileDialog
-
+from PyQt5.QtWidgets import QFileDialog, QMessageBox
 from AboutPage import Ui_About_Page
 from ContactPage import Ui_ContactForm
 
+CURRENTVERSION = 1.2
 
 class Ui_MainWindow(object):
 
@@ -27,7 +19,6 @@ class Ui_MainWindow(object):
         self.comboBox = QtWidgets.QComboBox(self.centralwidget)
         self.comboBox.setGeometry(QtCore.QRect(90, 20, 69, 22))
         self.comboBox.setObjectName("comboBox")
-        self.CurrentVersion = 1.1
         self.comboBox.addItem("Sha1")
         self.comboBox.addItem("Sha256")
         self.comboBox.addItem("Sha512")
@@ -126,19 +117,6 @@ class Ui_MainWindow(object):
         else:
             self.Status_label.setText("Nothing To Copy Hash File First")
 
-    def checkForUpdates(self):
-        import urllib.request
-        print('Beginning file download with urllib2')
-        url = "https://github.com/VbaGGz/Hashing_Tool/blob/master/TEMP/VERSION.txt"
-        urllib.request.urlretrieve(url, "VERSION.txt")
-        print("check open")
-        with open("VERSION.txt", 'r') as file:
-            line = file.read()
-            if "VERSION = {}".format(self.CurrentVersion) in line:
-                print(True)
-            else:
-                print(False)
-
     def Hash(self):
         import hashlib
         hashed = False
@@ -202,6 +180,24 @@ class Ui_MainWindow(object):
         if fileName:
             print(fileName)
 
+    def checkForUpdates(self):
+        import urllib.request
+        box = QMessageBox()
+        print('Beginning file download')
+        url = "https://raw.githubusercontent.com/VbaGGz/Hashing_Tool/master/TEMP/VERSION.txt"
+        urllib.request.urlretrieve(url, "Hashing_Tool\TEMP\VERSION.txt")
+        with open("Hashing_Tool\TEMP\VERSION.txt", 'r') as file:
+            line = file.read()
+            if CURRENTVERSION >= float(line):
+                box.setWindowTitle("Update Check")
+                box.setWindowIcon(QtGui.QIcon('Hashing_Tool\Icons\hash.png'))
+                box.setText("Your software is up to date!")
+                box.exec_()
+            else:
+                box.setWindowTitle("Update Check")
+                box.setWindowIcon(QtGui.QIcon('Hashing_Tool\Icons\hash.png'))
+                box.setText("There is an Update Download at https://github.com/VbaGGz/Hashing_Tool")
+                box.exec_()
 
 def buttonTriggers(object,About_Page):
     object.actionAbout.triggered.connect(About_Page.show)
